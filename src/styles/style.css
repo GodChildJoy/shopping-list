@@ -1,0 +1,14 @@
+.purchased-false {
+	  height: 40px;
+    background-color: red;
+}
+
+.purchased-true {
+	  height: 40px;
+    background-color: green;
+}
+
+.strikethrough {
+	text-decoration: line-through;
+	color: slategray;
+}
