@@ -9,7 +9,7 @@ const GloceryItemsList = ({items, deleteItem, toggleItemPurchase}) => {
     <div>
       <h2>Glocery List:</h2>
         <Table>
-          <TableBody stripedRows>
+          <TableBody stripedRows displayRowCheckbox={false}>
             {items.map((item, index) => (
               <TableRow key={index}>
                 <TableRowColumn>

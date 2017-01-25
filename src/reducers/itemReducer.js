@@ -12,7 +12,6 @@ function itemReducer(state=[], action) {
         ...state.filter(item => action.deleteItem.title !== item.title)
       ];
     case types.TOGGLE_ITEM_PURCHASE_SUCCESS:
-      console.log('hello from purchase success reducer!');
       return [
         // remove the toggle item form store,
         // update with the new value one from action (which is from backend)

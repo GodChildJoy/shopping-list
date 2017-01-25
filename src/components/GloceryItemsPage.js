@@ -21,7 +21,7 @@ class GloceryItemsPage extends React.Component {
       // Note: here item is object!!!!
       //item: {title: ""}
       items: this.props.items,
-      item: Object.assign({}, this.props.item)
+      item: {title: ""}
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -77,7 +77,8 @@ class GloceryItemsPage extends React.Component {
 
 GloceryItemsPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  items:  PropTypes.array.isRequired
+  items:  PropTypes.array.isRequired,
+  item: PropTypes.object.isRequired
 };
 
 function mapStateToProps (state, ownProps) {

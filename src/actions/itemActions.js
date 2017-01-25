@@ -1,5 +1,7 @@
 import * as types from './actionTypes';
-import gloceryItemApi from '../api/mockGloceryItemApi';
+import gloceryItemMockApi from '../api/mockGloceryItemApi';
+import gloceryItemApi from '../api/GloceryItemApi';
+
 
 //when no api call not involve backend, using this action
 // we change store straight don't care if request success
@@ -64,7 +66,7 @@ export function saveGloceryItem(item) {
 
 export function deleteGloceryItem(deleteItem) {
   return function(dispatch) {
-    return gloceryItemApi.deleteGloceryItem(deleteItem).then(item => {
+    return gloceryItemMockApi.deleteGloceryItem(deleteItem).then(item => {
       dispatch(deleteGloceryItemSuccess(deleteItem));
     }).catch(err => {
       throw(err);
@@ -74,7 +76,7 @@ export function deleteGloceryItem(deleteItem) {
 
 export function togglePurchase (item) {
   return function(dispatch) {
-    return gloceryItemApi.toggleItemPurchase(item).then(item => {
+    return gloceryItemMockApi.toggleItemPurchase(item).then(item => {
       dispatch(toggleItemPurchaseSuccess(item));
     }).catch(err => {
       throw(err);

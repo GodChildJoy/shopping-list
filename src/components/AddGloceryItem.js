@@ -49,4 +49,10 @@ class AddGloceryItem extends React.Component {
   }
 }
 
+AddGloceryItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  itemSave: PropTypes.func.isRequired,
+  handleTitleChange: PropTypes.func.isRequired
+};
+
 export default AddGloceryItem;
