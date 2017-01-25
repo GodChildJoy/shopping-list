@@ -4,6 +4,7 @@ import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
 import parser from 'body-parser';
+import db from './database';
 
 // routes, endpoint
 import itemsRoute from './routes/items';
