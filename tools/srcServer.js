@@ -13,17 +13,6 @@ import itemsRoute from './routes/items';
 const port = 3001;
 const app = express();
 const compiler = webpack(config);
-const items = [{
-    title:"Ice Cream"
-},{
-    title:"Waffles",
-    purchased:true
-},{
-    title:"Candy"
-},{
-    title:"Snarks",
-    purchased:false
-}];
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,

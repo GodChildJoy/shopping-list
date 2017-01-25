@@ -12,9 +12,9 @@ export default function (app) {
   }];
 
   app.route('/api/items')
-     .get((req, res) => res.send(items))
-     .post((req, res) => {
-        const item = req.body;
-        items.push(item);
-    });
+  .get((req, res) => res.send(items))
+  .post((req, res) => {
+    const item = req.body;
+    items.push(item);
+  });
 }
