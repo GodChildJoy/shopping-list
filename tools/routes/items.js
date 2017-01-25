@@ -16,5 +16,6 @@ export default function (app) {
   .post((req, res) => {
     const item = req.body;
     items.push(item);
+    res.send(item);
   });
 }
