@@ -2,5 +2,5 @@ martiral-design + react + redux + express + node
 
 
 to run: 
-  npm install
+  npm install，
   npm start
