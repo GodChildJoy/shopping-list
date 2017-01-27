@@ -55,10 +55,13 @@ export function loadGloceryItems(){
 
 //thunk handle save action for create and update
 export function saveGloceryItem(item) {
+  debugger;
   return function(dispatch) {
-    return gloceryItemApi.saveGloceryItem(item).then(item=>{
+    return gloceryItemApi.saveGloceryItem(item).then(data=>{
+      debugger;
       dispatch(createGloceryItemSuccess(item));
     }).catch(err => {
+      debugger;
       throw(err);
     });
   };
