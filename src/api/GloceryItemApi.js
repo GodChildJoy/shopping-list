@@ -1,7 +1,7 @@
 // real api calls goes here
 import $ from 'jquery';
 
-const endpoint = "api/items";
+const endpoint = "/api/items";
 
 export default class GloceryItemApi{
   static getAllGloceryItems() {
@@ -33,31 +33,36 @@ export default class GloceryItemApi{
     });
   }
 
-  // static deleteGloceryItem(itemDelete) {
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       const indexOfItemToDelete = items.findIndex(item => {
-  //         // arrow function if has {} need return in side
-  //         return item.title == itemDelete.title;
-  //       });
-  //       items.splice(indexOfItemToDelete, 1);
-  //       resolve(itemDelete);
-  //     }, delay);
-  //   });
-  // }
-  //
-  // static toggleItemPurchase(itemPurchase) {
-  //   itemPurchase = Object.assign({}, itemPurchase);
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       const indexOfItemToUpdate = [...items].findIndex(item =>
-  //         // arrow function without {}, don't need return
-  //         item.title === itemPurchase.title
-  //       );
-  //       [...items][indexOfItemToUpdate].purchased = !items[indexOfItemToUpdate].purchased;
-  //       resolve(items[indexOfItemToUpdate]);
-  //       console.log(items[indexOfItemToUpdate]);
-  //     }, delay);
-  //   });
-  // }
+  static deleteGloceryItem(itemDelete) {
+    return new Promise((success, error) => {
+      $.ajax({
+        url: endpoint+'/'+itemDelete._id,
+        type: "DELETE",
+        success: success,
+        error: error
+      });
+    });
+  }
+
+  static toggleItemPurchase(itemPurchase) {
+    //itemPurchase = Object.assign({}, itemPurchase);
+    return new Promise((success, error) => {
+      $.ajax({
+        url: endpoint+'/'+itemPurchase._id,
+        type: "PATCH",
+        data: itemPurchase,
+        success: success,
+        error: error
+      });
+      // setTimeout(() => {
+      //   const indexOfItemToUpdate = [...items].findIndex(item =>
+      //     // arrow function without {}, don't need return
+      //     item.title === itemPurchase.title
+      //   );
+      //   [...items][indexOfItemToUpdate].purchased = !items[indexOfItemToUpdate].purchased;
+      //   resolve(items[indexOfItemToUpdate]);
+      //   console.log(items[indexOfItemToUpdate]);
+      // }, delay);
+    });
+  }
 }

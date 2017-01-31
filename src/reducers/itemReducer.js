@@ -9,7 +9,7 @@ function itemReducer(state=[], action) {
       return action.items;
     case types.DELETE_GLOCERY_ITEM_SUCCESS:
       return [
-        ...state.filter(item => action.deleteItem.title !== item.title)
+        ...state.filter(item => action.id !== item._id)
       ];
     case types.TOGGLE_ITEM_PURCHASE_SUCCESS:
       return [
