@@ -10,6 +10,9 @@ const styles = {
     margin: '0 auto',
     paddingTop: 20,
     width: 800
+  },
+  header: {
+    paddingBottom: 20
   }
 };
 
@@ -19,9 +22,8 @@ class GloceryItemsPage extends React.Component {
 
     this.state = {
       // Note: here item is object!!!!
-      item: {title: "", purchased: false},
-      items: this.props.items
-      //item: Object.assign({}, this.props.item)
+      items: this.props.items,
+      item: Object.assign({}, this.props.item)
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -55,7 +57,8 @@ class GloceryItemsPage extends React.Component {
   render () {
     return (
       <div style={styles.container}>
-        <h1>Glocery Store using react+redux+mongo+express</h1>
+        <h1>Glocery Store</h1>
+        <h2 style={styles.header}>using react+redux+mongo+express</h2>
         <GloceryItemsList
           items={this.props.items}
           deleteItem={this.deleteItem}
@@ -75,7 +78,7 @@ GloceryItemsPage.propTypes = {
 };
 
 function mapStateToProps (state, ownProps) {
-  //let item = {title: "", purchased: false};
+  let item = {title: "", purchased: false};
   return {
     items: state.items // from rootReducer
   };

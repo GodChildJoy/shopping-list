@@ -51,6 +51,7 @@ export default class GloceryItemApi{
         url: endpoint+'/'+itemPurchase._id,
         type: "PATCH",
         data: itemPurchase,
+        dataType: 'json',
         success: success,
         error: error
       });

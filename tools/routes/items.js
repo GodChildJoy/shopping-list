@@ -11,9 +11,10 @@ export default function (app) {
   .post((req, res) => {
     const item = req.body;
     console.log("Adding item..", item);
+    // groceryItem is the saved item in db, which has property _id
     const groceryItem = new GroceryItem(item);
     groceryItem.save((err) => {
-      res.status(201).send(item);
+      res.status(201).send(groceryItem);
     });
   });
 
@@ -29,14 +30,18 @@ export default function (app) {
       });
   })
   .patch((req, res) => {
-    GroceryItem.findOne({
-      _id: req.body._id
-    }, (error, doc) => {
-      console.log(typeof(req.body.purchased));
+    GroceryItem.findById(req.params.id, function(err, doc) {
+      if (err)
+          res.send(err);
+      console.log(req.body.purchased);
       doc.purchased = !req.body.purchased;
-      doc.save();
-      res.status(200).send(doc);
+        console.log(req.body.purchased);
+      // save the bear
+      doc.save(function(err) {
+          if (err)
+              res.send(err);
+          res.send(doc);
+      });
     });
   });
-
 }
