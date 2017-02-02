@@ -1,4 +1,4 @@
-martiral-design + react + redux + express + node
+martiral-design + react + redux + express + node + mongodb
 
 
 to run: 
