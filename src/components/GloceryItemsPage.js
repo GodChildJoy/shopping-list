@@ -19,13 +19,11 @@ const styles = {
 class GloceryItemsPage extends React.Component {
   constructor(props){
     super(props);
-
     this.state = {
       // Note: here item is object!!!!
       items: this.props.items,
       item: Object.assign({}, this.props.item)
     };
-
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.itemSave = this.itemSave.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
@@ -80,7 +78,8 @@ GloceryItemsPage.propTypes = {
 function mapStateToProps (state, ownProps) {
   let item = {title: "", purchased: false};
   return {
-    items: state.items // from rootReducer
+    items: state.items, // from rootReducer
+    item: item
   };
 }
 

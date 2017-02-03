@@ -18,11 +18,6 @@ export default class GloceryItemApi{
   static saveGloceryItem(item) {
     //item = Object.assign({}, item); // to avoid manipulating object passed in.
     return new Promise((success, error) => {
-        // Simulate server-side validation
-        // const minItemTitleLength = 1;
-        // if (item.title.length < minItemTitleLength) {
-        //   reject(`Title must be at least ${minItemTitleLength} characters.`);
-        // }
         $.ajax({
           url: endpoint,
           type: "POST",
@@ -50,20 +45,10 @@ export default class GloceryItemApi{
       $.ajax({
         url: endpoint+'/'+itemPurchase._id,
         type: "PATCH",
-        data: itemPurchase,
-        dataType: 'json',
+        data: JSON.stringify(itemPurchase),
         success: success,
         error: error
       });
-      // setTimeout(() => {
-      //   const indexOfItemToUpdate = [...items].findIndex(item =>
-      //     // arrow function without {}, don't need return
-      //     item.title === itemPurchase.title
-      //   );
-      //   [...items][indexOfItemToUpdate].purchased = !items[indexOfItemToUpdate].purchased;
-      //   resolve(items[indexOfItemToUpdate]);
-      //   console.log(items[indexOfItemToUpdate]);
-      // }, delay);
     });
   }
 }

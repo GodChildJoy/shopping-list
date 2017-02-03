@@ -11,12 +11,14 @@ export default mongoose.connect('mongodb://localhost/groceries', () => {
 
   // write those into db
   const items = [{
-      title:"Ice Cream"
+      title:"Ice Cream",
+      purchased: false
   },{
       title:"Waffles",
       purchased:true
   },{
-      title:"Candy"
+      title:"Candy",
+      purchased: false
   },{
       title:"Snarks",
       purchased:false

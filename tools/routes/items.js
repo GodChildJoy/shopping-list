@@ -10,7 +10,6 @@ export default function (app) {
   })
   .post((req, res) => {
     const item = req.body;
-    console.log("Adding item..", item);
     // groceryItem is the saved item in db, which has property _id
     const groceryItem = new GroceryItem(item);
     groceryItem.save((err) => {
@@ -33,9 +32,7 @@ export default function (app) {
     GroceryItem.findById(req.params.id, function(err, doc) {
       if (err)
           res.send(err);
-      console.log(req.body.purchased);
-      doc.purchased = !req.body.purchased;
-        console.log(req.body.purchased);
+      doc.purchased = !doc.purchased;
       // save the bear
       doc.save(function(err) {
           if (err)
