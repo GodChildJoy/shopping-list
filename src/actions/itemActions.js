@@ -26,10 +26,10 @@ export function loadGloceryItemsSuccess(items) {
   };
 }
 
-export function deleteGloceryItemSuccess(deleteItem){
+export function deleteGloceryItemSuccess(id){
   return {
     type: types.DELETE_GLOCERY_ITEM_SUCCESS,
-    deleteItem// item: item(es6)
+    id// item: item(es6)
   };
 }
 
@@ -66,8 +66,8 @@ export function saveGloceryItem(item) {
 
 export function deleteGloceryItem(deleteItem) {
   return function(dispatch) {
-    return gloceryItemMockApi.deleteGloceryItem(deleteItem).then(item => {
-      dispatch(deleteGloceryItemSuccess(deleteItem));
+    return gloceryItemApi.deleteGloceryItem(deleteItem).then((id) => {
+      dispatch(deleteGloceryItemSuccess(id));
     }).catch(err => {
       throw(err);
     });
@@ -76,7 +76,7 @@ export function deleteGloceryItem(deleteItem) {
 
 export function togglePurchase (item) {
   return function(dispatch) {
-    return gloceryItemMockApi.toggleItemPurchase(item).then(item => {
+    return gloceryItemApi.toggleItemPurchase(item).then(item => {
       dispatch(toggleItemPurchaseSuccess(item));
     }).catch(err => {
       throw(err);

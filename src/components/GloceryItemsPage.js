@@ -10,31 +10,25 @@ const styles = {
     margin: '0 auto',
     paddingTop: 20,
     width: 800
+  },
+  header: {
+    paddingBottom: 20
   }
 };
 
 class GloceryItemsPage extends React.Component {
   constructor(props){
     super(props);
-
     this.state = {
       // Note: here item is object!!!!
-      //item: {title: ""}
       items: this.props.items,
-      item: {title: ""}
+      item: Object.assign({}, this.props.item)
     };
-
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.itemSave = this.itemSave.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.toggleItemPurchase = this.toggleItemPurchase.bind(this);
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.items != nextProps.items) {
-  //     this.setState({items: Object.assign({}, nextProps.items)});
-  //   }
-  // }
 
   handleTitleChange(e) {
     const item = this.state.item;
@@ -61,7 +55,8 @@ class GloceryItemsPage extends React.Component {
   render () {
     return (
       <div style={styles.container}>
-        <h1>Glocery Store using react+redux+mongo+express</h1>
+        <h1>Glocery Store</h1>
+        <h2 style={styles.header}>using react+redux+mongo+express</h2>
         <GloceryItemsList
           items={this.props.items}
           deleteItem={this.deleteItem}
@@ -77,13 +72,14 @@ class GloceryItemsPage extends React.Component {
 
 GloceryItemsPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  items:  PropTypes.array.isRequired,
-  item: PropTypes.object.isRequired
+  items:  PropTypes.array.isRequired
 };
 
 function mapStateToProps (state, ownProps) {
+  let item = {title: "", purchased: false};
   return {
-    items: state.items // from rootReducer
+    items: state.items, // from rootReducer
+    item: item
   };
 }
 
